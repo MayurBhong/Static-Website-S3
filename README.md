@@ -49,6 +49,7 @@ These files contain HTML, CSS, and JavaScript in a single file format.
    - `index.html`
    - `error.html`
 4. Complete the upload
+
 ![MasterHead](https://github.com/user-attachments/assets/3e719930-c7b3-4e5f-8689-72ba2b77cbb2)
 
 
@@ -60,7 +61,8 @@ These files contain HTML, CSS, and JavaScript in a single file format.
 5. Configure:
    - Index document: `index.html`
    - Error document: `error.html`
-6. Save changes  
+6. Save changes
+
 ![MasterHead](https://github.com/user-attachments/assets/faae3b7c-33d5-4dc4-a208-b79a713adc8c)
 
 ### 🔓 Step 5. Disable Block Public Access
@@ -68,7 +70,8 @@ These files contain HTML, CSS, and JavaScript in a single file format.
 2. Open **Block public access**  
 3. Edit settings  
 4. Uncheck all options  
-5. Save changes and confirm  
+5. Save changes and confirm
+
 ![MasterHead](https://github.com/user-attachments/assets/2ba6cc4f-8b59-43d1-a5d2-5f81ac626480)
 
 
@@ -130,6 +133,7 @@ To avoid unnecessary charges:
 - Public access configured securely  
 - Error handling validated  
 - Ready for portfolio and resume use
+
 
 
 
