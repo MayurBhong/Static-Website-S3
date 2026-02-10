@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AWS & DevOps Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg-dark: #0b0f14;
+      --bg-card: #121821;
+      --border: #1f2937;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --accent-orange: #f97316;
+      --accent-blue: #38bdf8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", system-ui, sans-serif;
+    }
+
+    body {
+      background:
+        linear-gradient(rgba(11,15,20,.9), rgba(11,15,20,.9)),
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,0.02) 0,
+          rgba(255,255,255,0.02) 1px,
+          transparent 1px,
+          transparent 40px
+        );
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,15,20,.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+
+    .logo span { color: var(--accent-orange); }
+
+    nav a {
+      margin-left: 24px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    nav a:hover { color: var(--accent-orange); }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 100px 24px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp .8s forwards;
+    }
+
+    section:nth-of-type(even) { animation-delay: .1s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+      text-align: center;
+      padding-top: 130px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border: 1px solid var(--accent-orange);
+      border-radius: 999px;
+      color: var(--accent-orange);
+      font-size: 13px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 18px rgba(249,115,22,.15);
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent-orange), var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: auto;
+      color: var(--text-muted);
+      font-size: 17px;
+    }
+
+    .cta {
+      margin-top: 36px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 13px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all .3s ease;
+    }
+
+    .btn.primary {
+      background: var(--accent-orange);
+      color: #000;
+      box-shadow: 0 10px 30px rgba(249,115,22,.35);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text-main);
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title span {
+      color: var(--accent-orange);
+      font-size: 13px;
+      letter-spacing: 3px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      margin-top: 10px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 26px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      transition: all .35s ease;
+      position: relative;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      background: radial-gradient(circle at top, rgba(249,115,22,.15), transparent);
+      opacity: 0;
+      transition: opacity .35s;
+    }
+
+    .card:hover::after { opacity: 1; }
+    .card:hover { transform: translateY(-8px); border-color: var(--accent-orange); }
+
+    .card h3 { margin-bottom: 8px; font-size: 18px; }
+    .card p { font-size: 14px; color: var(--text-muted); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      border: 1px solid var(--border);
+      transition: .25s;
+    }
+
+    .tag:hover {
+      transform: translateY(-2px);
+      border-color: currentColor;
+    }
+
+    .aws { color: var(--accent-orange); }
+    .devops { color: var(--accent-blue); }
+
+    .terminal {
+      margin-top: 60px;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      font-family: monospace;
+      font-size: 14px;
+      color: #e5e7eb;
+    }
+
+    .terminal span { color: var(--accent-orange); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 30px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">&lt; Cloud<span>Ops</span> /&gt;</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="badge">AWS Certified • DevOps Engineer</div>
+  <h1>AWS & DevOps <span>Portfolio</span></h1>
+  <p>
+    Building scalable cloud infrastructure, automating deployments,
+    and designing resilient architectures using AWS and modern DevOps practices.
+  </p>
+
+  <div class="cta">
+    <button class="btn primary" onclick="scrollToSection('projects')">View Projects</button>
+    <button class="btn secondary" onclick="scrollToSection('contact')">Get In Touch</button>
+  </div>
+
+  <div class="terminal">
+    <div><span>$</span> aws s3 sync ./site s3://my-portfolio</div>
+    <div><span>$</span> terraform apply -auto-approve</div>
+    <div><span>✓</span> Infrastructure deployed successfully</div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-title">
+    <h2>Passionate About Cloud & DevOps</h2>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Cloud Architecture</h3>
+      <p>Designing highly available and fault tolerant systems on AWS.</p>
+    </div>
+    <div class="card">
+      <h3>Automation</h3>
+      <p>Infrastructure as Code using Terraform and CloudFormation.</p>
+    </div>
+    <div class="card">
+      <h3>CI/CD Pipelines</h3>
+      <p>Zero downtime deployments with automated pipelines.</p>
+    </div>
+    <div class="card">
+      <h3>Monitoring</h3>
+      <p>Observability using CloudWatch, Prometheus, and Grafana.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-title">
+    <h2>Technical Toolkit</h2>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-box">
+      <h3 class="aws">AWS Services</h3>
+      <div class="tags">
+        <div class="tag aws">EC2</div>
+        <div class="tag aws">S3</div>
+        <div class="tag aws">VPC</div>
+        <div class="tag aws">IAM</div>
+        <div class="tag aws">Lambda</div>
+        <div class="tag aws">CloudFront</div>
+        <div class="tag aws">Auto Scaling</div>
+        <div class="tag aws">Route 53</div>
+      </div>
+    </div>
+
+    <div class="skill-box">
+      <h3 class="devops">DevOps Tools</h3>
+      <div class="tags">
+        <div class="tag devops">Git</div>
+        <div class="tag devops">Docker</div>
+        <div class="tag devops">Kubernetes</div>
+        <div class="tag devops">Terraform</div>
+        <div class="tag devops">Jenkins</div>
+        <div class="tag devops">Linux</div>
+        <div class="tag devops">Ansible</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-title">
+    <h2>Hands On Experience</h2>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Static Website on S3</h3>
+      <p>Serverless static website hosting using Amazon S3 and CloudFront.</p>
+    </div>
+    <div class="card">
+      <h3>Cost Optimized Architecture</h3>
+      <p>Designed scalable AWS infrastructure with minimal cost.</p>
+    </div>
+    <div class="card">
+      <h3>CI/CD Pipeline</h3>
+      <p>Automated build and deployment using Jenkins and GitHub.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-title">
+    <h2>Let’s Connect</h2>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Email</h3>
+      <p>bhongmayur5@example.com</p>
+    </div>
+    <div class="card">
+      <h3>GitHub</h3>
+      <p>https://github.com/MayurBhong</p>
+    </div>
+    <div class="card">
+      <h3>LinkedIn</h3>
+      <p>https://www.linkedin.com/in/mayur-bhong-446a472a6/</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 AWS & DevOps Portfolio • Built with HTML, CSS & JavaScript
+</footer>
+
+<script>
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+  }
+</script>
+
+</body>
+</html>
