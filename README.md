@@ -102,7 +102,6 @@ After adding the bucket policy, verify that public access is correctly configure
 - Check that objects inside the bucket are publicly readable  
 
 
-
 ### 🌐 Step 8. Access the Website
 1. Go to the **Properties** tab of your S3 bucket  
 2. Scroll to **Static website hosting**  
